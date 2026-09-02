@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark" id="htmlRoot">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="pageTitle">قرآن كريم | ياسر بن صولان - Yaser Bin Solan</title>
+  <link rel="icon" type="image/png" href="assets/VideosPhotos/fav.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Readex Pro', sans-serif; background-color: #090d16; color: #f8fafc; }
+    input[type="range"] { accent-color: #f59e0b; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black pb-32">
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#090d16]/90 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- الشعار -->
+      <a href="index.html" class="flex items-center group -mr-2 sm:-mr-4" dir="ltr">
+        <img src="assets/VideosPhotos/logo.png" alt="ياسر بن صولان" class="h-10 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity">
+      </a>
+
+      <!-- القائمة للشاشات الكبيرة -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="index.html" class="hover:text-amber-400 transition-colors" data-i18n="navHome">الرئيسية</a>
+        <a href="quran.html" class="text-amber-400 font-semibold border-b-2 border-amber-400 pb-1" data-i18n="navQuran">القرآن الكريم</a>
+        <a href="songs.html" class="hover:text-amber-400 transition-colors" data-i18n="navSongs">الأناشيد</a>
+        <a href="videos.html" class="hover:text-amber-400 transition-colors" data-i18n="navVideos">الفيديو كليب</a>
+        <a href="about.html" class="hover:text-amber-400 transition-colors" data-i18n="navAbout">عن الفنان</a>
+        <a href="contact.html" class="hover:text-amber-400 transition-colors" data-i18n="navContact">التواصل</a>
+      </nav>
+
+      <!-- الأزرار وزر الهمبرقر للشاشات الصغيرة -->
+      <div class="flex items-center gap-3">
+       <!-- زر التبديل بين اللغات والأعلام -->
+     <button id="langToggleBtn" class="text-xs font-semibold px-3 py-1.5 rounded-full border border-slate-700 text-slate-300 hover:border-amber-500 hover:text-amber-400 transition-all cursor-pointer inline-flex items-center gap-2">
+      <img id="lang-flag" src="https://flagcdn.com/w20/us.png" alt="US Flag" class="w-4 h-3 object-cover rounded-xs"> 
+      <span id="lang-text">EN</span>
+      </button>
+        <a href="contact.html" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-semibold px-4 py-2 rounded-xl text-sm shadow-md shadow-amber-500/10 transition-all">
+          <span data-i18n="contactArtist"> التواصل مع الفنان</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 icon-dir"></i>
+        </a>
+        
+        <!-- زر القائمة (الهمبرقر) -->
+        <button id="menu-btn" class="md:hidden text-slate-300 hover:text-amber-400 p-2 focus:outline-none" aria-label="القائمة">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+      
+    </div>
+
+    <!-- قائمة الجوال المنسدلة -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-950/95 border-b border-slate-800 px-4 pt-4 pb-6 space-y-3 absolute w-full left-0 shadow-2xl">
+      <a href="index.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="navHome">الرئيسية</a>
+      <a href="quran.html" class="block py-2 text-amber-400 font-semibold" data-i18n="navQuran">القرآن الكريم</a>
+      <a href="songs.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="navSongs">الأناشيد</a>
+      <a href="videos.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="navVideos">الفيديو كليب</a>
+      <a href="about.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="navAbout">عن الفنان</a>
+      <a href="contact.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="navContact">التواصل</a>
+      <div class="pt-2">
+        <a href="contact.html" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-semibold px-4 py-2.5 rounded-xl text-sm shadow-md">
+          <span data-i18n="contactArtist">التواصل مع الفنان</span>
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <section class="relative py-12 border-b border-slate-800/80 bg-slate-950/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-3">
+           <span data-i18n="mainTitlePart1">تلاوة عطرة</span> <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-200" data-i18n="mainTitlePart2">من القرآن الكريم</span> 
+        </h1>
+        <p class="max-w-2xl mx-auto text-slate-400 text-sm sm:text-base" data-i18n="mainSubtitle">
+          تلاوات خاشعة بصوت القارئ ياسر بن صولان (40 سورة مباركة)
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="surahGrid">
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الفاتحة" data-i18n-title="surahFateha" data-audio="/assets/quran_audio/AlFateha.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الفاتحة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahFateha">الفاتحة</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة البقرة" data-i18n-title="surahBaqara" data-audio="/assets/quran_audio/AlBaqara.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="البقرة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahBaqara">البقرة</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الكهف" data-i18n-title="surahKahf" data-audio="/assets/quran_audio/AlKahf.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الكهف" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahKahf">الكهف</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة النبأ" data-i18n-title="surahNaba" data-audio="/assets/quran_audio/ElNaba.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="النبأ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahNaba">النبأ</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة النازعات" data-i18n-title="surahNaziate" data-audio="/assets/quran_audio/ElNazeaat.m4a" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="النازعات" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahNaziate">النازعات</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة عبس" data-i18n-title="surahAbasa" data-audio="/assets/quran_audio/Abasa.MP3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="عبس" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahAbasa">عبس</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة التكوير" data-i18n-title="surahTakwir" data-audio="/assets/quran_audio/ElTakwir.MP3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="التكوير" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahTakwir">التكوير</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الانفطار" data-i18n-title="surahInfitar" data-audio="/assets/quran_audio/AlEnftar.MP3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الانفطار" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahInfitar">الانفطار</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة المطففين" data-i18n-title="surahMutaffifin" data-audio="/assets/quran_audio/AlMotaffefin.MP3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="المطففين" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahMutaffifin">المطففين</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الانشقاق" data-i18n-title="surahInshiqaq" data-audio="/assets/quran_audio/AlEnshekak.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الانشقاق" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahInshiqaq">الانشقاق</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة البروج" data-i18n-title="surahBurooj" data-audio="/assets/quran_audio/AlBerouj.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="البروج" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahBurooj">البروج</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الطارق" data-i18n-title="surahTariq" data-audio="/assets/quran_audio/AlTarek.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الطارق" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahTariq">الطارق</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الأعلى" data-i18n-title="surahAla" data-audio="/assets/quran_audio/AlAalaa.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الأعلى" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahAla">الأعلى</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الغاشية" data-i18n-title="surahGhashiyah" data-audio="/assets/quran_audio/AlGhasheya.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الغاشية" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahGhashiyah">الغاشية</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الفجر" data-i18n-title="surahFajr" data-audio="/assets/quran_audio/AlFagr.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الفجر" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahFajr">الفجر</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة البلد" data-i18n-title="surahBalad" data-audio="/assets/quran_audio/AlBalad.MP3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="البلد" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahBalad">البلد</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الشمس" data-i18n-title="surahShams" data-audio="/assets/quran_audio/AlShams.MP3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الشمس" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahShams">الشمس</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الليل" data-i18n-title="surahLail" data-audio="/assets/quran_audio/AlLayel.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الليل" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahLail">الليل</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الضحى" data-i18n-title="surahDuha" data-audio="/assets/quran_audio/AlDoha.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الضحى" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahDuha">الضحى</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الشرح" data-i18n-title="surahSharh" data-audio="/assets/quran_audio/AlSharh.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الشرح" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahSharh">الشرح</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة التين" data-i18n-title="surahTeen" data-audio="/assets/quran_audio/AlTeen.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="التين" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahTeen">التين</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة العلق" data-i18n-title="surahAlaq" data-audio="/assets/quran_audio/AlAlaq.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="العلق" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahAlaq">العلق</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة القدر" data-i18n-title="surahQadr" data-audio="/assets/quran_audio/AlQadr.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="القدر" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahQadr">القدر</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة البينة" data-i18n-title="surahBayyinah" data-audio="/assets/quran_audio/Albayena.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="البينة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahBayyinah">البينة</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الزلزلة" data-i18n-title="surahZalzalah" data-audio="/assets/quran_audio/AlZalzala.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الزلزلة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahZalzalah">الزلزلة</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة العاديات" data-i18n-title="surahAadiyat" data-audio="/assets/quran_audio/AlAadyat.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="العاديات" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahAadiyat">العاديات</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة القارعة" data-i18n-title="surahQariah" data-audio="/assets/quran_audio/AlQareaa.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="القارعة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahQariah">القارعة</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة التكاثر" data-i18n-title="surahTakathur" data-audio="/assets/quran_audio/AlTaqathor.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="التكاثر" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahTakathur">التكاثر</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة العصر" data-i18n-title="surahAsr" data-audio="/assets/quran_audio/AlAsr.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="العصر" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahAsr">العصر</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الهمزة" data-i18n-title="surahHumazah" data-audio="/assets/quran_audio/AlHamza.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الهمزة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahHumazah">الهمزة</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الفيل" data-i18n-title="surahFeel" data-audio="/assets/quran_audio/AlFeel.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الفيل" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahFeel">الفيل</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة قريش" data-i18n-title="surahQuraish" data-audio="/assets/quran_audio/Qoraysh.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="قريش" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahQuraish">قريش</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الماعون" data-i18n-title="surahMaoun" data-audio="/assets/quran_audio/AlMaaoun.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الماعون" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahMaoun">الماعون</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الكوثر" data-i18n-title="surahKawthar" data-audio="/assets/quran_audio/AlQawthar.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الكوثر" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahKawthar">الكوثر</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الكافرون" data-i18n-title="surahKafiroun" data-audio="/assets/quran_audio/AlKarfroun.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الكافرون" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahKafiroun">الكافرون</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة النصر" data-i18n-title="surahNasr" data-audio="/assets/quran_audio/AlNasr.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="النصر" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahNasr">النصر</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة المسد" data-i18n-title="surahMasad" data-audio="/assets/quran_audio/AlMasad.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="المسد" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahMasad">المسد</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الإخلاص" data-i18n-title="surahIkhlas" data-audio="/assets/quran_audio/AlEkhlas.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الإخلاص" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahIkhlas">الإخلاص</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الفلق" data-i18n-title="surahFalaq" data-audio="/assets/quran_audio/AlFalaq.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الفلق" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahFalaq">الفلق</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all shadow-lg flex flex-col justify-between" data-title="سورة الناس" data-i18n-title="surahNas" data-audio="/assets/quran_audio/AlNas.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="assets/VideosPhotos/quran.jpg" alt="الناس" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="play-icon-container absolute inset-0 m-auto w-14 h-14 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all shadow-lg shadow-amber-500/30">
+                  <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahNas">الناس</h3>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-950/60 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+              <i data-lucide="sparkles" class="w-7 h-7 text-amber-400"></i>
+              <span data-i18n="featuredTitle">تلاوات خاشعة ومميزة</span>
+            </h2>
+            <p class="text-slate-400 text-sm mt-2" data-i18n="featuredSubtitle">اختيارات ممتازة تمتاز بالروحانية والخشوع العالي</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div class="surah-card cursor-pointer bg-gradient-to-b from-slate-900 to-slate-950 border border-amber-500/30 rounded-3xl p-6 group hover:border-amber-400 transition-all shadow-xl relative overflow-hidden" data-title="سورة الكهف (تلاوة مميزة)" data-i18n-title="featuredKahfTitle" data-audio="/assets/quran_audio/AlKahf.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 font-bold text-xs px-4 py-1 rounded-bl-xl shadow-md" data-i18n="badgeFeatured">
+              مميزة
+            </div>
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all">
+                <i data-lucide="sparkles" class="w-8 h-8"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahKahf">سورة الكهف</h3>
+                <p class="text-xs text-slate-400 mt-1" data-i18n="featuredKahfDesc">تلاوة خاشعة ليوم الجمعة</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+              <span class="text-xs text-amber-400/90 font-medium flex items-center gap-1" data-i18n="listenNow">
+                <i data-lucide="play-circle" class="w-4 h-4"></i> استماع الآن
+              </span>
+              <span class="text-xs text-slate-500" data-i18n="artistName">ياسر بن صولان</span>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-gradient-to-b from-slate-900 to-slate-950 border border-amber-500/30 rounded-3xl p-6 group hover:border-amber-400 transition-all shadow-xl relative overflow-hidden" data-title="سورة الفاتحة (تلاوة مميزة)" data-i18n-title="featuredFatehaTitle" data-audio="/assets/quran_audio/AlFateha.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 font-bold text-xs px-4 py-1 rounded-bl-xl shadow-md" data-i18n="badgeFeatured">
+              مميزة
+            </div>
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all">
+                <i data-lucide="heart" class="w-8 h-8"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahFateha">سورة الفاتحة</h3>
+                <p class="text-xs text-slate-400 mt-1" data-i18n="featuredFatehaDesc">أم الكتاب والأداء الخاشع</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+              <span class="text-xs text-amber-400/90 font-medium flex items-center gap-1" data-i18n="listenNow">
+                <i data-lucide="play-circle" class="w-4 h-4"></i> استماع الآن
+              </span>
+              <span class="text-xs text-slate-500" data-i18n="artistName">ياسر بن صولان</span>
+            </div>
+          </div>
+
+          <div class="surah-card cursor-pointer bg-gradient-to-b from-slate-900 to-slate-950 border border-amber-500/30 rounded-3xl p-6 group hover:border-amber-400 transition-all shadow-xl relative overflow-hidden" data-title="سورة النبأ (تلاوة مميزة)" data-i18n-title="featuredNabaTitle" data-audio="/assets/quran_audio/ElNaba.mp3" data-img="assets/VideosPhotos/quran.jpg">
+            <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 font-bold text-xs px-4 py-1 rounded-bl-xl shadow-md" data-i18n="badgeFeatured">
+              مميزة
+            </div>
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all">
+                <i data-lucide="music" class="w-8 h-8"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="surahNaba">سورة النبأ</h3>
+                <p class="text-xs text-slate-400 mt-1" data-i18n="featuredNabaDesc">من أروع تلاوات جزء عم</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+              <span class="text-xs text-amber-400/90 font-medium flex items-center gap-1" data-i18n="listenNow">
+                <i data-lucide="play-circle" class="w-4 h-4"></i> استماع الآن
+              </span>
+              <span class="text-xs text-slate-500" data-i18n="artistName">ياسر بن صولان</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        
+        <div class="md:col-span-1 space-y-4">
+          <a href="index.html" class="inline-block -mr-2 sm:-mr-14" dir="ltr">
+            <img src="assets/VideosPhotos/logo.png" alt="ياسر بن صولان" class="h-10 sm:h-12 w-auto object-contain">
+          </a>
+       <p class="text-sm text-slate-400 leading-relaxed text-start" data-i18n="footerDesc">
+             الموقع الرسمي للمنشد والقارئ ياسر بن صولان لخدمة القرآن الكريم والأناشيد الإسلامية الهادفة.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm" data-i18n="quickLinks">روابط سريعة</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="index.html" class="hover:text-amber-400 transition-colors" data-i18n="navHome">الرئيسية</a></li>
+            <li><a href="quran.html" class="hover:text-amber-400 transition-colors" data-i18n="navQuran">القرآن الكريم</a></li>
+            <li><a href="songs.html" class="hover:text-amber-400 transition-colors" data-i18n="navSongs">الأناشيد</a></li>
+            <li><a href="videos.html" class="hover:text-amber-400 transition-colors" data-i18n="navVideos">الفيديو كليب</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm" data-i18n="aboutArtistTitle">عن الفنان</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="about.html" class="hover:text-amber-400 transition-colors" data-i18n="navAbout">السيرة الذاتية</a></li>
+            <li><a href="contact.html" class="hover:text-amber-400 transition-colors" data-i18n="navContact">اتصل بنا</a></li>
+            <li><a href="contact.html" class="hover:text-amber-400 transition-colors" data-i18n="bookingLink">حجز الحفلات والفعاليات</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-1">
+          <h4 class="text-white font-semibold mb-4 text-sm" data-i18n="socialTitle"> تابع المنشد عبر منصات التواصل</h4>
+          <div class="grid grid-cols-5 gap-2.5 max-w-[280px]">
+            
+            <!-- 1. فيسبوك -->
+            <a href="https://www.facebook.com/YaserBinSolan/" target="_blank" rel="noopener noreferrer"  aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-facebook-f text-sm"></i>
+            </a>
+            <!-- 2. إكس / تويتر -->
+            <a href="https://x.com/Yaser_Bin_Solan" target="_blank" rel="noopener noreferrer" aria-label="X" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-twitter text-sm"></i>
+            </a>
+            <!-- 3. يوتيوب -->
+            <a href="https://www.youtube.com/channel/UC7wgGWe8lTipH8Fzc-epbMw" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-youtube text-sm"></i>
+            </a>
+            <!-- 4. إنستغرام -->
+            <a href="https://www.instagram.com/yaser_bin_solan/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-instagram text-sm"></i>
+            </a>
+            <!-- 5. ساوند كلاود -->
+            <a href="https://soundcloud.com/yaser_bin_solan" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-soundcloud text-sm"></i>
+            </a>
+
+            <!-- 6. تيك توك -->
+            <a href="https://www.tiktok.com/@yaser_bin_solan" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-tiktok text-sm"></i>
+            </a>
+            <!-- 7. أمازون ميوزك -->
+            <a href="https://www.amazon.com/music/player/artists/B07RSCX5Z9/yaser-bin-solan" target="_blank" rel="noopener noreferrer" aria-label="Amazon Music" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-amazon text-sm"></i>
+            </a>
+            <!-- 8. سبوتيفاي -->
+            <a href="https://open.spotify.com/intl-ar/artist/3xTYV5WNlxKRa871gNEssr" target="_blank" rel="noopener noreferrer" aria-label="Spotify" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-spotify text-sm"></i>
+            </a>
+            <!-- 9. أبل ميوزك -->
+            <a href="https://music.apple.com/au/artist/yaser-bin-solan/1463209454" target="_blank" rel="noopener noreferrer" aria-label="Apple Music" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-apple text-sm"></i>
+            </a>
+            <!-- 10. سناب شات (في الأسفل) -->
+            <a href="https://www.snapchat.com/@yaseer1420" target="_blank" rel="noopener noreferrer" aria-label="Snapchat" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all">
+              <i class="fa-brands fa-snapchat text-sm"></i>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-slate-800/80 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-center gap-2">
+        <p data-i18n="copyRights">© جميع الحقوق محفوظة لياسر بن صولان</p>
+        <span class="text-slate-700 hidden sm:inline">|</span>
+        <p class="text-amber-500 font-semibold" data-i18n="developerBy">تطوير حمدي اللقماني</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="globalAudioPlayer" class="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800/80 px-4 py-3 transition-transform duration-300 translate-y-full shadow-2xl" dir="rtl">
+  <div class="max-w-7xl mx-auto flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
+    
+    <!-- معلومات السورة وزر الإغلاق (تصميم متناسق ومستقر) -->
+    <div class="flex items-center justify-between md:justify-start gap-3 w-full md:w-auto min-w-[240px]">
+      <div class="flex items-center gap-3 overflow-hidden">
+        <img id="playerImg" src="" alt="غلاف السورة" class="w-12 h-12 rounded-xl object-cover border border-slate-700/60 shadow-md shrink-0">
+        <div class="overflow-hidden">
+          <h4 id="playerTitle" class="text-sm font-bold text-white truncate" data-i18n="playerDefault">اختر سورة للتلاوة</h4>
+          <p class="text-xs text-amber-400 font-medium" data-i18n="artistName">ياسر بن صولان</p>
+        </div>
+      </div>
+      
+      <!-- زر إغلاق المشغل -->
+      <button id="closePlayerBtn" class="group flex items-center justify-center w-8 h-8 rounded-full bg-slate-800/80 border border-slate-700/50 text-slate-400 hover:text-white hover:bg-rose-500/20 hover:border-rose-500/40 transition-all duration-200 shrink-0 mr-auto md:mr-3" title="إغلاق المشغل">
+        <i data-lucide="x" class="w-4 h-4 transition-transform group-hover:rotate-90"></i>
+      </button>
+    </div>
+
+    <!-- أزرار التحكم وشريط التقدم -->
+    <div class="flex flex-col items-center gap-1.5 w-full md:max-w-xl flex-1">
+      <div class="flex items-center gap-5">
+        <button id="prevBtn" class="text-slate-400 hover:text-white transition-colors">
+          <i data-lucide="skip-forward" class="w-5 h-5"></i>
+        </button>
+        <button id="mainPlayBtn" class="w-10 h-10 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center hover:scale-105 transition-all shadow-md shadow-amber-500/20">
+          <i data-lucide="play" class="w-5 h-5 fill-current ml-0.5" id="mainPlayIcon"></i>
+        </button>
+        <button id="nextBtn" class="text-slate-400 hover:text-white transition-colors">
+          <i data-lucide="skip-back" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3 w-full text-xs text-slate-400">
+        <span id="duration" class="font-mono shrink-0">00:00</span>
+        <input type="range" id="progressBar" value="0" min="0" max="100" dir="ltr" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
+        <span id="currentTime" class="font-mono shrink-0">00:00</span>
+      </div>
+    </div>
+
+    <!-- التحكم في الصوت (يظهر في الشاشات المتوسطة فما فوق) -->
+    <div class="hidden md:flex items-center justify-end gap-3 min-w-[140px]">
+      <i data-lucide="volume-2" class="w-4 h-4 text-slate-400 shrink-0"></i>
+      <input type="range" id="volumeBar" value="100" min="0" max="100" dir="ltr" class="w-24 h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
+    </div>
+
+  </div>
+</div>
+
+<audio id="audioElement" preload="metadata"></audio>
+
+     <script src="javascript/Quran.js"></script>
+
+</body>
+</html>

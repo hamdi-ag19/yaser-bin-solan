@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">الفيديو كليب | المكتبة المرئية الكاملة - ياسر بن صولان</title>
+  <link rel="icon" type="image/png" href="assets/VideosPhotos/fav.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Readex Pro', sans-serif; background-color: #090d16; color: #f8fafc; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
+
+ <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#090d16]/90 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- الشعار -->
+      <a href="index.html" class="flex items-center group" id="logo-container" dir="ltr">
+        <img src="assets/VideosPhotos/logo.png" alt="ياسر بن صولان" class="h-10 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity">
+      </a>
+
+      <!-- القائمة للشاشات الكبيرة -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="index.html" class="hover:text-amber-400 transition-colors" data-i18n="nav-home">الرئيسية</a>
+        <a href="quran.html" class="hover:text-amber-400 transition-colors" data-i18n="nav-quran">القرآن الكريم</a>
+        <a href="songs.html" class="hover:text-amber-400 transition-colors" data-i18n="nav-songs">الأناشيد</a>
+        <a href="videos.html" class="text-amber-400 font-semibold border-b-2 border-amber-400 pb-1" data-i18n="nav-videos">الفيديو كليب</a>
+        <a href="about.html" class="hover:text-amber-400 transition-colors" data-i18n="nav-about">عن الفنان</a>
+        <a href="contact.html" class="hover:text-amber-400 transition-colors" data-i18n="nav-contact">التواصل</a>
+      </nav>
+
+      <!-- الأزرار وزر الهمبرقر للشاشات الصغيرة -->
+      <div class="flex items-center gap-3">
+        <!-- زر التبديل بين اللغات بالأعلام مثل الصفحة الرئيسية[cite: 13, 14] -->
+        <button id="lang-toggle" class="text-xs font-semibold px-3 py-1.5 rounded-full border border-slate-700 text-slate-300 hover:border-amber-500 hover:text-amber-400 transition-all cursor-pointer inline-flex items-center gap-2">
+          <img id="lang-flag" src="https://flagcdn.com/w20/us.png" alt="US Flag" class="w-4 h-3 object-cover rounded-xs"> 
+          <span id="lang-text">EN</span>
+        </button>
+        
+        <a href="contact.html" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-semibold px-4 py-2 rounded-xl text-sm shadow-md shadow-amber-500/10 transition-all">
+          <span data-i18n="contact-artist">التواصل مع الفنان</span>
+          <i data-lucide="arrow-left" class="w-4 h-4" id="contact-arrow"></i>
+        </a>
+        
+        <!-- زر القائمة (الهمبرقر) -->
+        <button id="menu-btn" class="md:hidden text-slate-300 hover:text-amber-400 p-2 focus:outline-none" aria-label="القائمة">
+          <i data-lucide="menu" class="w-6 h-6 transition-transform duration-300"></i>
+        </button>
+      </div>
+      
+    </div>
+
+    <!-- قائمة الجوال المنسدلة -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-950/95 border-b border-slate-800 px-4 pt-4 pb-6 space-y-3 absolute w-full left-0 shadow-2xl">
+      <a href="index.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="nav-home">الرئيسية</a>
+      <a href="quran.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="nav-quran">القرآن الكريم</a>
+      <a href="songs.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="nav-songs">الأناشيد</a>
+      <a href="videos.html" class="block py-2 text-amber-400 font-semibold" data-i18n="nav-videos">الفيديو كليب</a>
+      <a href="about.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="nav-about">عن الفنان</a>
+      <a href="contact.html" class="block py-2 text-slate-300 hover:text-amber-400 font-medium" data-i18n="nav-contact">التواصل</a>
+      <div class="pt-2">
+        <a href="contact.html" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-semibold px-4 py-2.5 rounded-xl text-sm shadow-md">
+          <span data-i18n="contact-artist">التواصل مع الفنان</span>
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="flex-grow">
+    <section class="relative py-12 border-b border-slate-800/80 bg-slate-950/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-slate-800/80 border border-amber-500/30 text-amber-400 text-xs font-medium mb-3" data-i18n="badge-title">
+          الإنتاج المرئي والمصوّر
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">
+          <span data-i18n="main-heading-start">فيديوهات</span> <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-200"  data-i18n="main-title">ياسر بن صولان</span>
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto" data-i18n="main-subtitle">جميع الأعمال المصورة الرسمية الخاصة بالمنشد ياسر بن صولان</p>
+      </div>
+    </section>
+
+    <!-- Video Grid - 3 Videos Per Row -->
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- 1 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="v5rx5ix9zxo">
+              <img src="assets/VideosPhotos/Graduation Day.jpg" alt="يوم التخرج" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-graduation">فيديو يوم التخرج</h3>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="Izrew9NJ2qU">
+              <img src="assets/VideosPhotos/MohamedSongPhoto.jpg" alt="محمد" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-mohammed">فيديو محمد</h3>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="1D-hkvJcS7I">
+              <img src="assets/VideosPhotos/BeHappy.jpg" alt="كن سعيدا" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+              <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-behappy">فيديو كن سعيداً</h3>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="tuc6V7JMU4c">
+              <img src="assets/VideosPhotos/Where are you.jpg" alt="أين أنت" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-whereareyou">فيديو أين أنت</h3>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="u4j_Oad3Bwo">
+              <img src="assets/VideosPhotos/Fly Away logo.png" alt="حلّق بعيداً" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-flyaway">فيديو حلّق بعيداً</h3>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="56QAPfFFqhY">
+              <img src="assets/VideosPhotos/Alienation.jpg" alt="الغربة" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-alienation">فيديو الغربة</h3>
+            </div>
+          </div>
+
+          <!-- 7 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="0SuTZkLud8Y">
+              <img src="assets/VideosPhotos/UniversalLove.jpg" alt="الحب العالمي" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-universallove">فيديو الحب العالمي</h3>
+            </div>
+          </div>
+
+          <!-- 8 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="sRqjcBEMwg8">
+              <img src="assets/VideosPhotos/Al Youm Eid.jpg" alt="اليوم عيد" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-alyoumeid">فيديو اليوم عيد</h3>
+            </div>
+          </div>
+
+          <!-- 9 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="dMB6ljlFp1c">
+              <img src="assets/VideosPhotos/Dahek Alhawa.jpg" alt="ضحك الهوى" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-dehkelhawa">فيديو ضحك الهوى</h3>
+            </div>
+          </div>
+
+          <!-- 10 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="OwKQPbVYQGg">
+              <img src="assets/VideosPhotos/Ramadan Alroh.jpg" alt="رمضان الروح" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-ramadanelrouh">فيديو رمضان الروح</h3>
+            </div>
+          </div>
+
+          <!-- 11 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="a_J4rMLItaA">
+              <img src="assets/VideosPhotos/Hekait Abdulaziz.png" alt="عبد العزيز" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-abdulaziz">فيديو عبد العزيز</h3>
+            </div>
+          </div>
+
+          <!-- 12 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="o7OnGqbXhps">
+              <img src="assets/VideosPhotos/Zekrayati.jpg" alt="ذكرياتي" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-zekrayati">فيديو ذكرياتي</h3>
+            </div>
+          </div>
+
+          <!-- 13 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="pzXk3YQPhZE">
+              <img src="assets/VideosPhotos/Zawgty.jpg" alt="زوجتي" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-zewgty">فيديو زوجتي</h3>
+            </div>
+          </div>
+
+          <!-- 14 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="QYEULdRIj1o">
+              <img src="assets/VideosPhotos/Abdulrahman.jpg" alt="عبد الرحمن" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-abdulrahman">فيديو عبد الرحمن</h3>
+            </div>
+          </div>
+
+          <!-- 15 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="hoY7aYxXDZY">
+              <img src="assets/VideosPhotos/Taibah.jpg" alt="طيبة" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-taibah">فيديو طيبة</h3>
+            </div>
+          </div>
+
+          <!-- 16 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="sv1u3FacmbI">
+              <img src="assets/VideosPhotos/Qalb Alom.jpg" alt="قلب الأم" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-qalbalom">فيديو قلب الأم</h3>
+            </div>
+          </div>
+
+          <!-- 17 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="G9fHRF4HVkg">
+              <img src="assets/VideosPhotos/Yaboy.jpg" alt="يابوي" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-yaboy">فيديو يابوي</h3>
+            </div>
+          </div>
+
+          <!-- 18 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="9T0VQKYaKrQ">
+              <img src="assets/VideosPhotos/Mabrok.jpg" alt="مبروك" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-mabrok">فيديو مبروك</h3>
+            </div>
+          </div>
+
+          <!-- 19 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition-all flex flex-col">
+            <div class="video-card-container relative aspect-video bg-slate-950 flex items-center justify-center cursor-pointer overflow-hidden" data-video-id="6ECRQOisLTo">
+              <img src="assets/VideosPhotos/Hena Gena.jpg" alt="حنا جينا" class="absolute inset-0 w-full h-full object-contain opacity-80 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors" data-i18n="vid-henagena">فيديو حنا جينا</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 pt-16 pb-12" id="footer-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        
+        <div class="md:col-span-1 space-y-4">
+          <a href="index.html" class="inline-block -mr-2 sm:-mr-14" dir="ltr">
+            <img src="assets/VideosPhotos/logo.png" alt="ياسر بن صولان" class="h-10 sm:h-12 w-auto object-contain">
+          </a>
+          <p class="text-sm text-slate-400 leading-relaxed text-right footer-desc" data-i18n="footer-desc" id="footer-desc-elem">
+            الموقع الرسمي للمنشد والقارئ ياسر بن صولان لخدمة القرآن الكريم والأناشيد الإسلامية الهادفة.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm" data-i18n="footer-quick-links">روابط سريعة</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="index.html" class="hover:text-amber-400 transition-colors" data-i18n="nav-home">الرئيسية</a></li>
+            <li><a href="quran.html" class="hover:text-amber-400 transition-colors" data-i18n="nav-quran">القرآن الكريم</a></li>
+            <li><a href="songs.html" class="hover:text-amber-400 transition-colors" data-i18n="nav-songs">الأناشيد</a></li>
+            <li><a href="videos.html" class="hover:text-amber-400 transition-colors" data-i18n="nav-videos">الفيديو كليب</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm" data-i18n="footer-about-artist">عن الفنان</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="about.html" class="hover:text-amber-400 transition-colors" data-i18n="footer-biography">السيرة الذاتية</a></li>
+            <li><a href="contact.html" class="hover:text-amber-400 transition-colors" data-i18n="footer-contact-us">اتصل بنا</a></li>
+            <li><a href="contact.html" class="hover:text-amber-400 transition-colors" data-i18n="footer-booking">حجز الحفلات والفعاليات</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-1">
+          <h4 class="text-white font-semibold mb-4 text-sm" data-i18n="footer-social"> تابع المنشد عبر منصات التواصل</h4>
+          <div class="grid grid-cols-5 gap-2.5 max-w-[280px]">
+            <!-- وسائل التواصل -->
+            <a href="https://www.facebook.com/YaserBinSolan/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+            <a href="https://x.com/Yaser_Bin_Solan" target="_blank" rel="noopener noreferrer" aria-label="X" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-twitter text-sm"></i></a>
+            <a href="https://www.youtube.com/channel/UC7wgGWe8lTipH8Fzc-epbMw" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-youtube text-sm"></i></a>
+            <a href="https://www.instagram.com/yaser_bin_solan/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-instagram text-sm"></i></a>
+            <a href="https://soundcloud.com/yaser_bin_solan" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-soundcloud text-sm"></i></a>
+            <a href="https://www.tiktok.com/@yaser_bin_solan" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-tiktok text-sm"></i></a>
+            <a href="https://www.amazon.com/music/player/artists/B07RSCX5Z9/yaser-bin-solan" target="_blank" rel="noopener noreferrer" aria-label="Amazon Music" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-amazon text-sm"></i></a>
+            <a href="https://open.spotify.com/intl-ar/artist/3xTYV5WNlxKRa871gNEssr" target="_blank" rel="noopener noreferrer" aria-label="Spotify" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-spotify text-sm"></i></a>
+            <a href="https://music.apple.com/au/artist/yaser-bin-solan/1463209454" target="_blank" rel="noopener noreferrer" aria-label="Apple Music" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-apple text-sm"></i></a>
+            <a href="https://www.snapchat.com/@yaseer1420" target="_blank" rel="noopener noreferrer" aria-label="Snapchat" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/50 transition-all"><i class="fa-brands fa-snapchat text-sm"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-slate-800/80 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-center gap-2">
+        <p data-i18n="copy-rights">© جميع الحقوق محفوظة لياسر بن صولان</p>
+        <span class="text-slate-700 hidden sm:inline">|</span>
+        <p class="text-amber-500 font-semibold" data-i18n="developer-name">تطوير حمدي اللقماني</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- سكربت الترجمة الديناميكية وتشغيل الفيديوهات -->
+     <script src="javascript/Videos.js"></script>
+     
+</body>
+</html>
